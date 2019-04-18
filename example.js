@@ -3,12 +3,13 @@ const swarm = require('./')
 const morph = require('nanomorph')
 const html = require('nanohtml')
 
-//const SIGNALHUB = 'https://signalhub-jccqtwhdwc.now.sh'
-const SIGNALHUB = 'https://signalhub.littlstar.com'
 const key = '626d55ffe6eafc13e32309ca4985b83cf15c0c015e6ba8f32dcebed2a50e0c27'
-const hub = signalhub(key, [ SIGNALHUB ])
-const rpc = swarm(hub)
+const hub = signalhub(key, [
+  'https://signalhub-jccqtwhdwc.now.sh',
+  'https://signalhub.littlstar.com',
+])
 
+const rpc = swarm(hub)
 const tree = html`
   <div> The date is ${Date()} </div>
 `
@@ -32,7 +33,8 @@ rpc.command({
 })
 
 rpc.on('peer', async (peer) => {
+  console.log('peer', peer);
   global.peer = peer
-  setInterval(() => peer.render(`<div> The date is ${Date()} </div>`), 1000)
+  peer.render(`<div> The date is ${Date()} </div>`)
   console.log(await peer.echo('hello world'))
 })
