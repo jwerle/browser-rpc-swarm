@@ -1,0 +1,12 @@
+// type=0x1ee
+message Manifest {
+  bytes id = 1;
+  repeated string commands = 2;
+  Error error = 10;
+  message Error {
+    string name = 1;
+    string code = 2;
+    string message = 3;
+    string stack = 10;
+  }
+}
