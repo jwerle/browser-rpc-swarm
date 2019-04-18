@@ -78,7 +78,7 @@ class RPC extends EventEmitter {
     const { manifest } = this
     const rpc = protocol({ stream })
 
-    this.peers[id] =  { stream, rpc }
+    this.peers[id] =  { rpc }
 
     for (const name of manifest.commands) {
       const callback = this.commands[name]
@@ -95,7 +95,6 @@ class RPC extends EventEmitter {
     rpc.extension(MANIFEST, messages.Manifest)
     rpc.send(MANIFEST, manifest)
     rpc.once('close', () => {
-      console.log('destroy');
       stream.destroy()
     })
 
@@ -125,15 +124,12 @@ class RPC extends EventEmitter {
     }
 
     this.discovery.close()
+    this.connections.destroy()
 
     for (const id in this.peers) {
       const peer = this.peers[id]
       if (peer.rpc) {
         peer.rpc.close()
-      }
-
-      if (peer.stream) {
-        peer.stream.destroy()
       }
     }
   }
