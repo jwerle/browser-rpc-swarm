@@ -1,6 +1,6 @@
 {
   "name": "browser-rpc-swarm",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Give control of your browser over RPC to another in a discovery swarm",
   "main": "index.js",
   "scripts": {
