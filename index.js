@@ -99,6 +99,10 @@ class RPC extends EventEmitter {
     })
 
     rpc.on('extension', (ext, type, buffer, reply) => {
+      if (!this.peers[id]) {
+        return
+      }
+
       if (MANIFEST === type) {
         let channel = null
 
