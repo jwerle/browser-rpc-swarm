@@ -13,6 +13,8 @@ const tree = html`
   <div> The date is ${Date()} </div>
 `
 
+global.rpc = rpc
+
 document.body.appendChild(tree)
 
 rpc.command({
@@ -30,6 +32,7 @@ rpc.command({
 })
 
 rpc.on('peer', async (peer) => {
+  global.peer = peer
   setInterval(() => peer.render(`<div> The date is ${Date()} </div>`), 1000)
   console.log(await peer.echo('hello world'))
 })
