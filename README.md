@@ -20,7 +20,7 @@ const signalhub = require('signalhub')
 const swarm = require('./')
 const key = '626d55ffe6eafc13e32309ca4985b83cf15c0c015e6ba8f32dcebed2a50e0c27'
 const hub = signalhub(key, [ 'yourdomain.com' ])
-const rpc = swarm(hub
+const rpc = swarm(hub)
 
 rpc.command({
   async echo(value) {
