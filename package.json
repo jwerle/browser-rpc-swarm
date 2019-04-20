@@ -20,11 +20,11 @@
     "nanomorph": "^5.4.0",
     "pify": "^4.0.1",
     "rpc-protocol": "^0.1.2",
+    "webrtc-swarm": "^2.9.0",
     "thunky": "^1.0.3"
   },
   "devDependencies": {
-    "signalhub": "^4.9.0",
-    "webrtc-swarm": "^2.9.0"
+    "signalhub": "^4.9.0"
   },
   "repository": {
     "type": "git",
