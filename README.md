@@ -96,7 +96,7 @@ like a normal function.
 
 ```js
 rpc.on('peer', async (peer) => {
-  console.log(await rpc.hello()) // 'world'
+  console.log(await rpc.echo('hello world')) // 'hello world'
 })
 ```
 
